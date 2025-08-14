@@ -14,10 +14,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className="min-h-screen bg-gray-50 text-gray-900">{children}</body>
-            <Providers>
-                <main className="mx-auto max-w-md p-6">{children}</main>
-            </Providers>
+            <body className="min-h-screen bg-gray-50 text-gray-900">
+                <Providers>
+                    <main className="mx-auto max-w-md p-6">{children}</main>
+                </Providers>
+            </body>
         </html>
     )
 }
