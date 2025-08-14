@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react"
 import Home from "@/app/page"
 
 describe("Home Page", () => {
-  it("renders heading", () => {
-    render(<Home />)
-    expect(screen.getByRole("heading", { name: /hello world/i })).toBeInTheDocument()
-  })
+    it("renders heading", () => {
+        render(<Home />)
+        expect(screen.getByRole("heading", { name: /hello world/i })).toBeInTheDocument()
+    })
 })
