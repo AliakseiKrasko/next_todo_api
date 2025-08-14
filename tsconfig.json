@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "types": ["jest", "node"],
     "baseUrl": ".",
@@ -24,7 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-
-  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "jest.setup.ts"],
+  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
