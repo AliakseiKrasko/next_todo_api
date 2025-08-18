@@ -25,7 +25,20 @@ export default function DashboardPage() {
         if (saved) {
             setTaskList(JSON.parse(saved))
         }
-    }, []);
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("taskList", JSON.stringify(taskList))
+    }, [])
+
+    const addList = () =>{
+        const title = prompt("What is your new task?")
+        if (title) {
+            setTaskList([...taskList, { id: Date.now(), title, tasks: [] }])
+        }
+    }
+
+
 
     return (
         <div className="max-w-2xl mx-auto p-6">
