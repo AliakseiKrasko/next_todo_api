@@ -31,14 +31,25 @@ export default function DashboardPage() {
         localStorage.setItem("taskList", JSON.stringify(taskList))
     }, [])
 
-    const addList = () =>{
+    const addList = () => {
         const title = prompt("What is your new task?")
         if (title) {
             setTaskList([...taskList, { id: Date.now(), title, tasks: [] }])
         }
     }
 
+    const removeList = (id: number) => {
+        if (confirm("Are you sure you want to delete this task?")) {
+            setTaskList(taskList.filter((task) => task.id !== id))
+        }
+    }
 
+    const editList = (id: number) => {
+        const title = prompt("What is your new task?")
+        if (title) {
+            setTaskList(taskList.map((list) => (list.id === id ? { ...list, title } : list)))
+        }
+    }
 
     return (
         <div className="max-w-2xl mx-auto p-6">
@@ -52,7 +63,7 @@ export default function DashboardPage() {
             </button>
 
             <ul className="space-y-3">
-                {lists.map((list) => (
+                {taskList.map((list) => (
                     <li
                         key={list.id}
                         className="flex justify-between items-center p-3 border rounded"
@@ -63,12 +74,12 @@ export default function DashboardPage() {
                         <div className="space-x-2">
                             <button
                                 onClick={() => editList(list.id)}
-                                className="px-3 py-1 bg-yellow-400 rounded hover:bg-yellow-500"
+                                className="px-3 py-1 bg-yellow-400 rounded hover:bg-yellow-500 mb-1"
                             >
                                 ✏️ Редактировать
                             </button>
                             <button
-                                onClick={() => deleteList(list.id)}
+                                onClick={() => removeList(list.id)}
                                 className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
                             >
                                 🗑 Удалить
